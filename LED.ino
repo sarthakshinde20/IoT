@@ -1,15 +1,21 @@
-int ldrPin = A4; // Analog input pin for LDR int ldrValue; // Variable to store LDR value
+int del =5;
+int a = 0;
 void setup()
 {
-pinMode(ldrPin,INPUT);
-Serial.begin(9600); // Initialize serial communication for debugging
+  pinMode(3, OUTPUT);
 }
 void loop()
 {
-int readValue;
-float realValue;
-readValue = analogRead(ldrPin);
-realValue = (5.0/1024.0)*readValue;
-Serial.println(realValue);
-delay(1000);
+  for(a=0; a<256; a++)
+  {
+    analogWrite(3,a);
+    delay(del);
+  }
+  for(a=255; a>=0; a--);
+  {
+    analogWrite(3,a);
+    delay(del);
+  }
+  delay(200);
 }
+
