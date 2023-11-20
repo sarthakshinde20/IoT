@@ -1,14 +1,21 @@
-#include<LiquidCrystal.h>
-LiquidCrystal LCD(12,11,5,4,3,2);
-void setup ()
+const int ENA = 6;
+const int IN1 = 7;
+const int IN2 = 8;
+void setup()
 {
-  LCD.begin(16,2);
+  pinMode(ENA,OUTPUT);
+  pinMode(IN1,OUTPUT);
+  pinMode(IN2,OUTPUT);
 }
-
 void loop()
 {
-  LCD.setCursor(0,0);
-  delay(1000);
-  LCD.print("BE ECE");
-  delay(1000);
+  analogWrite(ENA,255);
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,LOW);
+  delay(2000);
+
+  analogWrite(ENA,255);
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,HIGH);
+  delay(2000);
 }
